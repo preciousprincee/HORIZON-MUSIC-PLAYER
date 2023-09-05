@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap-5.2.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body id="app" v-cloak> 
+      <div v-if="invisible" class="container">
+          <player
+           v-bind:song="list[currentSong] "
+           @goback="invisible = !invisible"
+           @next="playNext"
+           @previous="playPrevious"
+          />
+      </div>
+      
+
+      <div class="md:mx-auto md:w-50" v-if="!invisible">
+        <section>
+          <div class="container bg-gray-400 w-30 h-100 mx-auto">
+           <h2 class="font-bold text-2xl mx-auto text-center text-brown-500">
+             SOUND HORIZON
+           </h2>
+           <div  v-for="(songs, index) in list" v-bind:key="songs.id" v-on:click="playsong(index)" class="flex flex-row space-x-3 text-center pl-4">
+             <div class="w-1/2 rounded-l-30">
+               <img src="./img/FB_IMG_16283258302971333.jpg" alt="" class="mt-5 mb-3 w-20 h-15 rounded-full">
+       
+             </div>
+             <div>
+               <h3  @click="toog" class="font-bold text-3xl text-left pt-8 ">
+                 {{songs.songTitle}}
+               </h3>
+               <h3 class="font-bold pt-3 text-left ">
+                 {{songs.artist}}
+               </h3>
+             </div>
+           </div>
+           <hr>
+          </div>
+       
+         </section>
+      </div>
+      
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="script.js"></script>
+          
+</body>
+</html>  
